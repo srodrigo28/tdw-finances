@@ -17,7 +17,7 @@ export default function PageLogin() {
             <section className="flex gap-10 h-full flex-col justify-center max-w-[500px] p-8 mx-auto">
             <Image src="/logo.svg" width={173} height={39} alt="Finances Now" className="animate-pulse" />
             <h1 className="text-4xl font-bold">Bem-Vindo</h1>
-            <p className="text-green-600 text-xl text-justify tracking-wider">Seu dinheiro trabalhando ao seu seu favor crescendo com seu esforço de cada dia, dando sentido a um futuro melhor não deixe para amanhã! Não e simplismente investir e cudar para ter no futuro próximo</p>
+            <p className="text-green-600 text-xl text-justify tracking-wider">Seu dinheiro trabalhando para você, crescendo a cada dia com o seu esforço e construindo um futuro melhor. Não deixe para depois! Investir não é apenas aplicar, mas também cuidar para colher os frutos no futuro próximo.</p>
             <SignInButton>
                 <Button variant="outline">
                     <LogInIcon className="mr-2" />
