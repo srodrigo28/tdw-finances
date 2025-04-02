@@ -1,12 +1,12 @@
 import { UserButton } from "@clerk/nextjs";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex items-center justify-around h-screen">
-      <h1 className="text-6xl text-violet-700 font-semibold">Hello finances</h1>
-      <div className="bg-slate-400 rounded-lg p-2 text-xl">
-      <UserButton showName />
-      </div>
+    <div className="flex justify-around items-center flex-col md:flex-row gap-10 md:gap-0">
+        <h1 className="text-6xl text-violet-700 font-semibold">finances</h1>
+        <Link href="/transactions"><button className="text-green-600 tracking-wider font-semibold text-2xl">Dashboard</button></Link>
+        <div className="bg-slate-600 h-auto p-2 rounded-md"><UserButton showName /> </div>
     </div>
   );
 }

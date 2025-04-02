@@ -105,6 +105,16 @@ export const config = {
 https://dashboard.clerk.com/apps/app_2v8S9SX4IbzJbUcl80WGuGuzNVf/instances/ins_2v8S9frTs23ZcDe5FBOyqGBLzhf
 ```
 
+#### React Number Formate
+* doc
+```
+https://www.npmjs.com/package/react-number-format
+```
+
+```
+npm i react-number-format
+```
+
 #### Ref.
 
 * ultimo visto

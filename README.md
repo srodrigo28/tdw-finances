@@ -12,3 +12,5 @@
 > * NeonDB Online
 > * TailwindCSS
 > * Clerk - Auth
+> * Zod - Validação
+> * React Hook Form
