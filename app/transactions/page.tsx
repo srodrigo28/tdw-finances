@@ -1,7 +1,12 @@
-const Transactions = () => {
+import { db } from "../../lib/prisma"
+
+const Transactions = async () => {
+    const transactions = await db.transaction.findMany({})
     return(
-        <div>
-            <h1>Transactions</h1>
+        <div className="p-20">
+            {transactions.map((item) =>(
+                <div className="text-white" key={item.id}>{item.name}</div>
+            ))}
         </div>
     )
 }

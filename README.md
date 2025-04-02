@@ -40,6 +40,11 @@ npx prisma format
 npx prisma migrate dev --name init-db
 ```
 
+* serviço para usar no frontend
+```
+npm i @prisma/client@5.21
+```
+
 #### ShadCN
 ``` Instalação
 npx shadcn@2.1.3 init
@@ -94,7 +99,16 @@ export const config = {
     }
 ```
 
-``` 5.2 usando no Login
+``` 5.2 Import UseNavigation do next
+    <SignInButton>
+        <Button variant="outline">
+            <LogInIcon className="mr-2" />
+            Fazer login ou criar conta
+        </Button>
+    </SignInButton>
+```
+
+``` 5.3 painel
 <SignInButton>
                 <Button variant="outline">
                     <LogInIcon className="mr-2" />
@@ -102,14 +116,14 @@ export const config = {
                 </Button>
             </SignInButton>
 ```
-npm install @clerk/themes@2.1.37
+https://dashboard.clerk.com/apps/app_2v8S9SX4IbzJbUcl80WGuGuzNVf/instances/ins_2v8S9frTs23ZcDe5FBOyqGBLzhf
 ```
 
 #### Ref.
 
 * ultimo visto
 ```
-https://alunos.fullstackclub.com.br/area/produto/item/4438354
+https://alunos.fullstackclub.com.br/area/produto/item/4438357
 ```
 
 ```git
