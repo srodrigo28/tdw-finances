@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    border: none;
+    outline: none;
+    list-style: none;
+    text-decoration: none;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+button{
+    cursor: pointer;
+    transition: .3s;
+}
+
+:root{
+    font-size: 62.5%;
+
+    /* CORES VARIAVEIS */
+}
+
+body{
+    font-size: 1.6rem;
+    background-color: #7C3ADE;
+}
+
+#app{
+    display: grid;
+    grid-template-columns: max-content 1fr;
+
+    min-height: 100vh;
+}
+
+main .inner{
+    height: 100%;
+    border-top-left-radius: 40px;
+    background-color: #f8f8f8;
+}
+
+main{
+    padding-top: 1.8rem;
+}
+
+nav{
+    padding: 4rem 3rem 0 4rem;
+    width-min: ;
+}
