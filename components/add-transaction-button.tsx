@@ -1,4 +1,5 @@
 "use client";
+
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -35,7 +36,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
-import { TRANSACTION_TYPE_OPTIONS } from "./_constants/transactions";
+import { TRANSACTION_CATEGORY_OTIONS, TRANSACTION_PAYMENT_METHOD_OPTIONS, TRANSACTION_TYPE_OPTIONS } from "./_constants/transactions";
 
 const formSchema = z.object({
   name: z.string().trim().min(1, {
@@ -88,7 +89,7 @@ const AddTransactionButton = () => {
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             
-            <FormField
+            <FormField /* NOME */
               control={form.control}
               name="name"
               render={({ field }) => (
@@ -102,21 +103,27 @@ const AddTransactionButton = () => {
               )}
             />
 
-            <FormField
+            <FormField /* VALOR */
               control={form.control}
               name="amount"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Valor</FormLabel>
                   <FormControl>
-                    <MoneyInput placeholder="digite o nome" {...field} />
+                    <MoneyInput 
+                    placeholder="digite o nome" 
+                    value={field.value}
+                    onValueChange={({floatValue}) => field.onChange(floatValue)}
+                    onBlur={field.onBlur}
+                    disabled={field.disabled}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
 
-            <FormField
+            <FormField /* TRANSACTION_TYPE_OPTIONS */
               control={form.control}
               name="type"
               render={({ field }) => (
@@ -144,23 +151,51 @@ const AddTransactionButton = () => {
               )}
             />
 
-            <FormField
+            <FormField /* TRANSACTION_PAYMENT_METHOD_OPTIONS */
               control={form.control}
               name="paymentMethod"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Tipo de Pagamento</FormLabel>
+                  <FormLabel>Método de pagamento</FormLabel>
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Selecione Tipo Pagamento" />
+                        <SelectValue placeholder="Selecione um Método de pagamento" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      {TRANSACTION_TYPE_OPTIONS.map(option => (
+                      {TRANSACTION_PAYMENT_METHOD_OPTIONS.map(option => (
+                        <SelectItem key={option.value} value={option.value}>
+                          {option.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField /* TRANSACTION_PAYMENT_METHOD_OPTIONS */
+              control={form.control}
+              name="category"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Categoria</FormLabel>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Selecione um Método de pagamento" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {TRANSACTION_CATEGORY_OTIONS.map(option => (
                         <SelectItem key={option.value} value={option.value}>
                           {option.label}
                         </SelectItem>

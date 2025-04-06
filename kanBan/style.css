@@ -10,6 +10,8 @@
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    font-family: "Poppins", sans-serif;
 }
 button{
     cursor: pointer;
@@ -46,5 +48,29 @@ main{
 
 nav{
     padding: 4rem 3rem 0 4rem;
-    width-min: ;
+    min-width: 12rem;
 }
+
+ul{
+    margin-top: 6rem;
+    display: grid;
+    gap: 3.5rem;
+}
+ul li a{
+    color: #fff;
+
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 10px;
+    border-radius: 3px;
+    border-top-left-radius: 10px;
+    background-color: #a11fe7dd;
+    transition: .4s;
+}
+a.active,
+a:hover{
+    color: white;
+    font-weight: 700;
+}
+

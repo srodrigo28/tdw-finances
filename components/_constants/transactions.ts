@@ -1,4 +1,4 @@
-import { TransactionPaymentMethod, TransactionType } from "@prisma/client";
+import { TransactionCategory, TransactionPaymentMethod, TransactionType } from "@prisma/client";
 
 export const TRANSACTION_CATEGORY_LABELS = {
   EDUCATION: "Educação",
@@ -37,7 +37,7 @@ export const TRANSACTION_TYPE_OPTIONS = [
   },
 ];
 
-export const PAYMENT_METHOD_OPTIONS = [
+export const TRANSACTION_PAYMENT_METHOD_OPTIONS = [
   {
     value: TransactionPaymentMethod.BANK_TRANSFER,
     label: TRANSACTION_PAYMENT_METHOD_LABELS[TransactionPaymentMethod.BANK_TRANSFER]
@@ -66,4 +66,40 @@ export const PAYMENT_METHOD_OPTIONS = [
     value: TransactionPaymentMethod.PIX,
     label: TRANSACTION_PAYMENT_METHOD_LABELS[TransactionPaymentMethod.PIX]
   },
+];
+
+export const TRANSACTION_CATEGORY_OTIONS = [
+  {
+    value: TransactionCategory.EDUCATION,
+    label: TRANSACTION_CATEGORY_LABELS[TransactionCategory.EDUCATION]
+  },
+  {
+    value: TransactionCategory.ENTERTAINMENT,
+    label: TRANSACTION_CATEGORY_LABELS[TransactionCategory.ENTERTAINMENT]
+  },
+  {
+    value: TransactionCategory.FOOD,
+    label: TRANSACTION_CATEGORY_LABELS[TransactionCategory.FOOD]
+  },
+  {
+    value: TransactionCategory.HEALTH,
+    label: TRANSACTION_CATEGORY_LABELS[TransactionCategory.HEALTH]
+  },
+  {
+    value: TransactionCategory.HOUSING,
+    label: TRANSACTION_CATEGORY_LABELS[TransactionCategory.HOUSING]
+  },
+  {
+    value: TransactionCategory.OTHER,
+    label: TRANSACTION_CATEGORY_LABELS[TransactionCategory.OTHER]
+  },
+  {
+    value: TransactionCategory.SALARY,
+    label: TRANSACTION_CATEGORY_LABELS[TransactionCategory.SALARY]
+  },
+  {
+    value: TransactionCategory.TRANSPORTATION,
+    label: TRANSACTION_CATEGORY_LABELS[TransactionCategory.TRANSPORTATION]
+  },
+  
 ];
