@@ -1,6 +1,4 @@
-import { Button } from "@/components/ui/button"
 import { db } from "../../lib/prisma"
-import { ArrowDownUp } from "lucide-react"
 import { DataTable } from "@/components/ui/data-table"
 import { TransactionColumns } from "./_columns"
 import AddTransactionButton from "@/components/add-transaction-button"
