@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "./ui/button";
 import { ArrowDownUp } from "lucide-react";
-import { DialogTitle } from "@radix-ui/react-dialog";
+import { DialogClose, DialogTitle } from "@radix-ui/react-dialog";
 import {
   TransactionCategory,
   TransactionPaymentMethod,
@@ -37,6 +37,7 @@ import {
   SelectValue,
 } from "./ui/select";
 import { TRANSACTION_CATEGORY_OTIONS, TRANSACTION_PAYMENT_METHOD_OPTIONS, TRANSACTION_TYPE_OPTIONS } from "./_constants/transactions";
+import { DatePicker } from "./ui/date-picker";
 
 const formSchema = z.object({
   name: z.string().trim().min(1, {
@@ -59,6 +60,8 @@ const formSchema = z.object({
   }),
 });
 
+type FormSchema = z.infer<typeof formSchema>
+
 const AddTransactionButton = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -71,9 +74,15 @@ const AddTransactionButton = () => {
       paymentMethod: TransactionPaymentMethod.CASH,
     },
   });
-  const onSubmit = () => {};
+  const onSubmit = ( data: FormSchema ) => {
+    console.log({data})
+  };
   return (
-    <Dialog>
+    <Dialog onOpenChange={ (open) => {
+      if(!open){
+        form.reset()
+      }
+    }}>
       <DialogTrigger asChild>
         <Button className="rounded-full">
           Adicionar transação
@@ -151,6 +160,34 @@ const AddTransactionButton = () => {
               )}
             />
 
+            <FormField /* TRANSACTION_CATEGORY_OTIONS */
+              control={form.control}
+              name="category"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Categoria</FormLabel>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Selecione um Método de pagamento" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {TRANSACTION_CATEGORY_OTIONS.map(option => (
+                        <SelectItem key={option.value} value={option.value}>
+                          {option.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
             <FormField /* TRANSACTION_PAYMENT_METHOD_OPTIONS */
               control={form.control}
               name="paymentMethod"
@@ -179,37 +216,23 @@ const AddTransactionButton = () => {
               )}
             />
 
-            <FormField /* TRANSACTION_PAYMENT_METHOD_OPTIONS */
+            <FormField /* DATA*/
               control={form.control}
-              name="category"
+              name="date"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Categoria</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Selecione um Método de pagamento" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {TRANSACTION_CATEGORY_OTIONS.map(option => (
-                        <SelectItem key={option.value} value={option.value}>
-                          {option.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  <FormLabel>Selecione uma Data</FormLabel>
+                  <DatePicker value={field.value} onChange={field.onChange} />
                   <FormMessage />
                 </FormItem>
               )}
             />
 
             <DialogFooter>
-              <Button>Adicionar</Button>
-              <Button variant="destructive">Cancelar</Button>
+              <DialogClose asChild>
+                <Button className="bg-transparent border-2 border-red-500 hover:bg-red-500 duration-300">Cancelar</Button>
+              </DialogClose>
+              <Button type="submit" className="bg-transparent border-2 border-green-500 hover:bg-green-500 duration-300">Adicionar</Button>
             </DialogFooter>
           </form>
         </Form>
