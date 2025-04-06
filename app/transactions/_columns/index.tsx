@@ -23,7 +23,7 @@ export const TransactionColumns: ColumnDef<Transaction>[] = [
   {
     accessorKey: "category",
     header: "Categoria",
-    cell: ({ row: {original: transaction}}) => 
+    cell: ({ row: { original: transaction } }) =>
       TRANSACTION_CATEGORY_LABELS[transaction.category],
   },
   {

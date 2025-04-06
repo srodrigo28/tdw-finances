@@ -5,11 +5,11 @@ export const TRANSACTION_CATEGORY_LABELS = {
   ENTERTAINMENT: "Entretenimento",
   FOOD: "Alimentação",
   HEALTH: "Saúde",
-  HOUSING: "Habitação",
+  HOUSING: "Moradia",
   OTHER: "Outros",
   SALARY: "Salário",
   TRANSPORTATION: "Transporte",
-  UTILTY: "Utilidades",
+  UTILITY: "Utilidades",
 };
 
 export const TRANSACTION_PAYMENT_METHOD_LABELS = {
@@ -101,5 +101,4 @@ export const TRANSACTION_CATEGORY_OTIONS = [
     value: TransactionCategory.TRANSPORTATION,
     label: TRANSACTION_CATEGORY_LABELS[TransactionCategory.TRANSPORTATION]
   },
-  
 ];
