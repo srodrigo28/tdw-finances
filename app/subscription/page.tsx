@@ -1,7 +1,9 @@
+import Navbar from "@/components/navbar"
+
 const Subscription = () => {
     return(
         <div>
-            <h1>Subscription</h1>
+            <Navbar />
         </div>
     )
 }
