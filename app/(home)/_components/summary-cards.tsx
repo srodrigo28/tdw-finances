@@ -17,7 +17,7 @@ const SummaryCards = async ({ balance, depositsTotal, investmentsTotal, expenses
                 size={25} />} 
                 title="Saldo" 
                 amount={balance} 
-                className="text-4xl"
+                className="md:text-4xl"
             />
             
             {/* Outros cards */}

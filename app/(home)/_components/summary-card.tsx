@@ -15,14 +15,14 @@ const SummaryCard = ( {icon, title, amount, className } : SummaryCardProps) => {
         {icon}
         <p className="text-muted-foreground">{title}</p>
       </CardHeader>
-      <CardContent className="flex justify-between">
+      <CardContent className="flex justify-between items-center">
         <p className={`text-2xl font-bold ${className}`}>{
             Intl.NumberFormat( "pt-BR",
                 { style: "currency",
                   currency: "BRL",
                 }).format(amount)}
         </p>
-        { className == "text-4xl" && <AddTransactionButton /> }
+        { className == "md:text-4xl" && <AddTransactionButton /> }
       </CardContent>
     </Card>
   );
