@@ -12,7 +12,7 @@ const AddTransactionButton = () => {
     <>
       <Button className="rounded-full" 
         onClick={() => setDialogIsOpen(true)}>
-        Adicionar transação
+        Adicionar
         <ArrowDownUp />
       </Button>
       <UpsertTransactionDialog
