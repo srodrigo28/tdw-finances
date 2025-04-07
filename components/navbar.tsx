@@ -15,7 +15,7 @@ const Navbar = () => {
             <div className="md:flex items-center gap-10 hidden">
                 <Link className={ pathname == "/" ? "text-primary font-bold" : "text-muted-foreground" } href="/">Dashboard</Link>
                 <Link className={  pathname == "/transactions" ? "text-primary font-bold" : "text-muted-foreground" } href="/transactions">Transações</Link>
-                <Link className={pathname == "/subscription" ? "text-primary font-bold" : "text-muted-foreground" } href="/subscription">Assinatura</Link>
+                <Link className={pathname == "/subscription" ? "text-primary font-bold" : "text-muted-foreground" } href="/subscription">Apostes</Link>
             </div>
             
             {/* DIREITA */}

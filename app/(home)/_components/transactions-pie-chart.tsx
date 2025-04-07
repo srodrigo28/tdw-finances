@@ -66,7 +66,7 @@ export const TransactionsPieChart = ({
     },
   ];
   return (
-    <Card className="flex flex-col p-12">
+    <Card className="flex flex-col p-8">
       <CardHeader className="items-center pb-0">
         <CardTitle>Faturamento Total</CardTitle>
         <CardDescription>Gráfico atual</CardDescription>
@@ -89,7 +89,7 @@ export const TransactionsPieChart = ({
             />
           </PieChart>
         </ChartContainer>
-        <div className="space-y-5 max-w-96 mx-auto">
+        <div className="space-y-3 max-w-96 mx-auto">
           <PercentageItem
             icon={<PiggyBank size={25} className="text-primary" />}
             title="Receita"
