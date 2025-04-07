@@ -19,7 +19,9 @@ const Navbar = () => {
             </div>
             
             {/* DIREITA */}
+            <div className="bg-primary flex items-center justify-center p-2 rounded-full">
             <UserButton showName />
+            </div>
 
         </nav>
      );

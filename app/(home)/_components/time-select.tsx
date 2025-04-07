@@ -3,18 +3,18 @@
 import { SelectContent, SelectItem, SelectTrigger, 
     SelectValue } from "@/components/ui/select";
 import { Select } from "@radix-ui/react-select";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const MONTH_OPTIONS = [
-    { value: "1", Label: 'Janary' },
-    { value: "2", Label: 'February' },
-    { value: "3", Label: 'March' },
-    { value: "4", Label: 'April' },
-    { value: "5", Label: 'May' },
-    { value: "6", Label: 'June' },
-    { value: "7", Label: 'July' },
-    { value: "8", Label: 'August' },
-    { value: "9", Label: 'September' },
+    { value: "01", Label: 'Janary' },
+    { value: "02", Label: 'February' },
+    { value: "03", Label: 'March' },
+    { value: "04", Label: 'April' },
+    { value: "05", Label: 'May' },
+    { value: "06", Label: 'June' },
+    { value: "07", Label: 'July' },
+    { value: "08", Label: 'August' },
+    { value: "09", Label: 'September' },
     { value: "10", Label: 'October' },
     { value: "11", Label: 'November' },
     { value: "12", Label: 'December' },
@@ -22,12 +22,17 @@ const MONTH_OPTIONS = [
 
 const TimeSelect = () => {
     const { push } = useRouter()
+    const searchParams = useSearchParams()
+    const month = searchParams.get('month')
     const handleMonthChange = (month: string) => {
         // push('/?month=' + month)
         push(`/?month=${month}`);
     }
     return ( 
-        <Select onValueChange={(value) => handleMonthChange(value)}>
+        <Select 
+            onValueChange={(value) => handleMonthChange(value)}
+            defaultValue={month ?? ''}
+            >
             <SelectTrigger className="w-44 rounded-full">
                 <SelectValue placeholder="Mês" />
             </SelectTrigger>

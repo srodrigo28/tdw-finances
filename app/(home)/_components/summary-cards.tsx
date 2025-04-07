@@ -2,24 +2,34 @@ import { PiggyBankIcon, TrendingDownIcon, TrendingUpIcon, WalletIcon } from "luc
 import SummaryCard from "./summary-card";
 import { db } from "@/lib/prisma";
 
-const SummaryCards = async () => {
+interface SumaryCardProps{
+    month: string;
+}
+
+const SummaryCards = async ({month}: SumaryCardProps) => {
+    const where = {
+        date: {
+            gte: new Date(`2025-${month}-01`),
+            lt: new Date(`2025-${month}-31`)
+        }
+    }
     const depositsTotal = Number(
         (await db.transaction.aggregate({
-            where: { type: "DEPOSIT" },
+            where: {...where, type: "DEPOSIT" },
             _sum: { amount: true },
         }))?._sum?.amount
     )
 
     const investmentsTotal = Number(
         (await db.transaction.aggregate({
-            where: { type: "INVESTMENT" },
+            where: {...where, type: "INVESTMENT" },
             _sum: { amount: true },
         }))?._sum?.amount
     )
 
     const expensesTotal = Number(
         (await db.transaction.aggregate({
-            where: { type: "EXPENSE" },
+            where: {...where, type: "EXPENSE" },
             _sum: { amount: true },
         }))?._sum?.amount
     )

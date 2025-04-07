@@ -3,10 +3,19 @@ import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import SummaryCards from "./_components/summary-cards";
 import TimeSelect from "./_components/time-select";
+import { isMatch } from "date-fns";
 
-export default function Home() {
+interface HomeProps{
+  searchParams: {  month: string; }
+}
+
+export default function Home({searchParams: {month}} : HomeProps) {
   const {userId} = auth()
   if(!userId) redirect('/login')
+    const monthIsInvalid = !month || !isMatch(month, "MM")
+  if(monthIsInvalid){
+    redirect('?month=01') // caso seja invalido colocar um 404
+  }
   return (
     <>
       <Navbar />
@@ -15,7 +24,7 @@ export default function Home() {
           <h1 className="text-2xl font-bold">Dashboard</h1>
           <TimeSelect />
         </div>
-        <SummaryCards />
+        <SummaryCards month={month}  />
       </div>
     </>
   );
