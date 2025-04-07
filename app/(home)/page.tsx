@@ -4,18 +4,21 @@ import { redirect } from "next/navigation";
 import SummaryCards from "./_components/summary-cards";
 import TimeSelect from "./_components/time-select";
 import { isMatch } from "date-fns";
+import { TransactionsPieChart } from "./_components/transactions-pie-chart";
+import { getDashboard } from "../_data/get-dashboard";
 
 interface HomeProps{
   searchParams: {  month: string; }
 }
 
-export default function Home({searchParams: {month}} : HomeProps) {
+const Home = async({searchParams: {month}} : HomeProps) => {
   const {userId} = auth()
   if(!userId) redirect('/login')
     const monthIsInvalid = !month || !isMatch(month, "MM")
   if(monthIsInvalid){
     redirect('?month=01') // caso seja invalido colocar um 404
   }
+  const dashboard = await getDashboard(month)
   return (
     <>
       <Navbar />
@@ -24,8 +27,14 @@ export default function Home({searchParams: {month}} : HomeProps) {
           <h1 className="text-2xl font-bold">Dashboard</h1>
           <TimeSelect />
         </div>
-        <SummaryCards month={month}  />
-      </div>
+        <SummaryCards month={month} {...dashboard}  />
+          
+          <div className="md:grid md:grid-cols-3 md:grid-rows-1 gap-6">
+            <TransactionsPieChart {...dashboard} />
+          </div>
+        </div>
     </>
   );
 }
+
+export default Home;
