@@ -1,14 +1,37 @@
 import { PiggyBankIcon, TrendingDownIcon, TrendingUpIcon, WalletIcon } from "lucide-react";
 import SummaryCard from "./summary-card";
+import { db } from "@/lib/prisma";
 
-const SummaryCards = () => {
+const SummaryCards = async () => {
+    const depositsTotal = Number(
+        (await db.transaction.aggregate({
+            where: { type: "DEPOSIT" },
+            _sum: { amount: true },
+        }))?._sum?.amount
+    )
+
+    const investmentsTotal = Number(
+        (await db.transaction.aggregate({
+            where: { type: "INVESTMENT" },
+            _sum: { amount: true },
+        }))?._sum?.amount
+    )
+
+    const expensesTotal = Number(
+        (await db.transaction.aggregate({
+            where: { type: "EXPENSE" },
+            _sum: { amount: true },
+        }))?._sum?.amount
+    )
+
+    const balance = depositsTotal - ( investmentsTotal - expensesTotal )
     return ( 
         <div className="space-y-6">
             <SummaryCard 
                 icon={<WalletIcon 
                 size={25} />} 
                 title="Saldo" 
-                amount={270} 
+                amount={balance} 
                 className="text-4xl"
             />
             
@@ -18,20 +41,20 @@ const SummaryCards = () => {
                 icon={<PiggyBankIcon 
                 size={25} /> } 
                 title="Investido" 
-                amount={2000}
+                amount={investmentsTotal}
             />
             <SummaryCard 
                 icon={<TrendingUpIcon 
                 size={25} 
                 className="text-primary" />} 
                 title="Receita" 
-                amount={5000}
+                amount={depositsTotal}
             />
             <SummaryCard 
                 icon={<TrendingDownIcon 
                 size={25} 
                 className="text-red-500" />} 
-                title="Despesas" amount={4000}
+                title="Despesas" amount={expensesTotal}
             />
             </div>
         </div>
