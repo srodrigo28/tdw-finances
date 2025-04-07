@@ -55,10 +55,10 @@ export const TransactionColumns: ColumnDef<Transaction>[] = [
   {
     accessorKey: "actions",
     header: "Ações",
-    cell: () => {
+    cell: ({row: {original: transaction}}) => {
       return (
         <div>
-         <EditTransactionButton />
+         <EditTransactionButton transaction={transaction} />
           <Button variant="ghost" size="icon" className="text-muted-foreground"> 
               <TrashIcon />
           </Button>

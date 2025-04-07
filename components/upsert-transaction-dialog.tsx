@@ -15,7 +15,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, } from "
 import { TRANSACTION_CATEGORY_OTIONS,
   TRANSACTION_PAYMENT_METHOD_OPTIONS, TRANSACTION_TYPE_OPTIONS, } from "./_constants/transactions";
 import { DatePicker } from "./ui/date-picker";
-import { addTransaction } from "@/app/_actions/add-transaction";
+import { UpsertTransaction } from "@/app/_actions/add-transaction";
 
 const formSchema = z.object({
   name: z.string().trim().min(1, {
@@ -42,13 +42,17 @@ type FormSchema = z.infer<typeof formSchema>;
 
 interface UpsertTranactionDiaglogProps{
     isOpen: boolean;
+    defaultValues?: FormSchema;
+    transactionId?: string;
     setIsOpen: (isOpen: boolean) => void;
 }
-const UpsertTransactionDialog = ( {isOpen, setIsOpen}: UpsertTranactionDiaglogProps) => {
+const UpsertTransactionDialog = ( {
+  isOpen, setIsOpen, defaultValues, transactionId
+}: UpsertTranactionDiaglogProps) => {
 
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
+    defaultValues: defaultValues ?? {
       name: "",
       amount: 0,
       date: new Date(),
@@ -60,13 +64,14 @@ const UpsertTransactionDialog = ( {isOpen, setIsOpen}: UpsertTranactionDiaglogPr
 
   const onSubmit = async (data: FormSchema) => {
     try {
-      await addTransaction(data);
+      await UpsertTransaction({...data, id: transactionId});
       setIsOpen(false);
       form.reset();
     } catch (error) {
       console.log(error);
     }
   };
+  const isUpdate = Boolean(transactionId);
   return (
     <Dialog
       open={isOpen}
@@ -82,7 +87,7 @@ const UpsertTransactionDialog = ( {isOpen, setIsOpen}: UpsertTranactionDiaglogPr
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Adicionar transação</DialogTitle>
+          <DialogTitle>{isUpdate ? 'Atualizar' : 'Inserir'} transação</DialogTitle>
           <DialogDescription>Insira as informações abaixo. </DialogDescription>
         </DialogHeader>
 
@@ -230,7 +235,7 @@ const UpsertTransactionDialog = ( {isOpen, setIsOpen}: UpsertTranactionDiaglogPr
                 type="submit"
                 className="bg-transparent border-2 border-green-500 hover:bg-green-500 duration-300"
               >
-                Adicionar
+                {isUpdate ? 'Atualizar' : 'Adicionar'}
               </Button>
             </DialogFooter>
           </form>
