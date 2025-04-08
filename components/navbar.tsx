@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 const Navbar = () => {
     const pathname = usePathname();
     return ( 
-        <nav className="flex justify-between px-8 py-4 border-b border-solid">
+        <nav className="flex justify-between px-8 py-4 border-b border-solid sticky top-0 z-10 bg-slate-900">
             {/* ESQUERDA */}
             <Image src="/logo.svg" width={173} height={39} alt="Finance AI Logo" />
 
