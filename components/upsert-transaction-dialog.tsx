@@ -15,7 +15,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, } from "
 import { TRANSACTION_CATEGORY_OTIONS,
   TRANSACTION_PAYMENT_METHOD_OPTIONS, TRANSACTION_TYPE_OPTIONS, } from "./_constants/transactions";
 import { DatePicker } from "./ui/date-picker";
-import { UpsertTransaction } from "@/app/_actions/add-transaction";
+import { UpsertTransaction } from "@/app/_actions";
 
 const formSchema = z.object({
   name: z.string().trim().min(1, {
@@ -46,6 +46,7 @@ interface UpsertTranactionDiaglogProps{
     transactionId?: string;
     setIsOpen: (isOpen: boolean) => void;
 }
+
 const UpsertTransactionDialog = ( {
   isOpen, setIsOpen, defaultValues, transactionId
 }: UpsertTranactionDiaglogProps) => {
