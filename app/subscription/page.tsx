@@ -21,7 +21,7 @@ const Subscription = () => {
                             </h2>
                             <div className="flex items-center gap-3 justify-center">
                                 <span className="text-4xl">R$</span>
-                                <span className="font-semibold text-6xl">400</span>
+                                <span className="font-semibold text-6xl">0</span>
                                 <div className="text-2xl text-muted-foreground">/mês</div>
                             </div>
                         </CardHeader>
@@ -34,7 +34,7 @@ const Subscription = () => {
                                 <XIcon className="text-primary" />
                                 <p>Inicio e acompanhamento.</p>
                             </div>
-                            <Button className="rounded-full bg-primary">Adquirir plano</Button>
+                            <Button className="rounded-full bg-primary">Fazer upgrade</Button>
                         </CardContent>
                     </Card>
                     <Card className="md:w-[420px] w-full">
@@ -44,8 +44,8 @@ const Subscription = () => {
                             </h2>
                             <div className="flex items-center gap-3 justify-center">
                                 <span className="text-4xl">R$</span>
-                                <span className="font-semibold text-6xl">800</span>
-                                <div className="text-2xl text-muted-foreground">/mês</div>
+                                <span className="font-semibold text-6xl">19</span>
+                                <div className="text-2xl text-muted-foreground">,99/mês</div>
                             </div>
                         </CardHeader>
                         <CardContent className="space-y-6 py-6 flex flex-col">
@@ -59,29 +59,6 @@ const Subscription = () => {
                             </div>
                             <Button className="rounded-full bg-primary">Adquirir plano</Button>
                         </CardContent>                        
-                    </Card>
-                    <Card className="md:w-[420px] w-full">
-                        <CardHeader className="border-b border-solid py-8">
-                            <h2 className="text-center text-2xl font-semibold">
-                                Plano Pro Particular + Projetos
-                            </h2>
-                            <div className="flex items-center gap-3 justify-center">
-                                <span className="text-4xl">R$ </span>
-                                <span className="font-semibold text-6xl">1.200,00</span>
-                                <div className="text-2xl text-muted-foreground">/mês</div>
-                            </div>
-                        </CardHeader>
-                        <CardContent className="space-y-6 py-6 flex flex-col">
-                            <div className="flex items-center gap-2">
-                                <CheckIcon className="text-primary" />
-                                <p>Apenas 16 conexões por mês(16/16)</p>
-                            </div>
-                            <div className="flex items-center gap-3">
-                                <XIcon className="text-primary" />
-                                <p>Projetos fullStack Jobs sob orientação.</p>
-                            </div>
-                            <Button className="rounded-full bg-primary">Adquirir plano</Button>
-                        </CardContent>
                     </Card>
                 </div>
             </div>
