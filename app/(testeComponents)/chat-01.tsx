@@ -78,7 +78,7 @@ export function Chat_01() {
       </CardContent>
       <CardFooter className="flex-col gap-2 text-sm">
         <div className="flex items-center gap-2 font-medium leading-none">
-          Crescimento 5.2% ao mês <TrendingUp className="h-4 w-4" />
+          Crescimento de até 2.8% ao mês <TrendingUp className="h-4 w-4" />
         </div>
         <div className="leading-none text-muted-foreground">Treina Dev Soluções em Desenvolvimento</div>
       </CardFooter>
