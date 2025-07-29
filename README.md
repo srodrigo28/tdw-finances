@@ -20,5 +20,5 @@
 <img src="./screens/desktop-view-2.png" alt="tela 02" />
 
 
-<img src="./screens/mobile view.png" alt="tela mobile" />
+<img src="./screens/mobile-view.png" alt="tela mobile" />
 
