@@ -11,9 +11,14 @@
 > * React Hook Form
 > * Strip Sistema de pagamentos
 
-> ### Dashboard Telas
+> #### Dashboard Telas
 
+## Tela 01 web
 <img src="./screens/desktop-view.png" alt="" />
+
+## Tela 02 web
 <img src="./screens/desktop-view-2.png" alt="" />
+
+
 <img src="./screens/mobile view.png" alt="" />
 
